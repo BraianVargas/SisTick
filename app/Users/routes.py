@@ -15,17 +15,19 @@ import time
 #Login
 @usersBP.route('/login', methods=['GET', 'POST'])
 def login():
-    username = request.args.get('username')
-    password = request.args.get('password')
-    
-    users = verifLogin(username,password)
-    
-    print(users)
-    input()
-    if username in users and check_password_hash(users[username], password):
-        session['username'] = username
-        return redirect('/')
-    return 'Invalid username or password'
+    if current_user.is_authenticated:
+        return f"Is already logged in. {current_user.username}"
+    else:
+        recivedUserData = request.get_json()
+
+        try:
+            user = getUserFromLogin(recivedUserData['username'], recivedUserData['password'])
+            if ((user!=None) and (isinstance(user,User))):
+                login_user(user, remember = recivedUserData['remember'], duration = datetime.timedelta(minutes=15))
+                return f"Se pudo loguear {user.username}"
+
+        except Exception as e:
+            return f"User or password wrong. Error.{e}"
 
 #Desloguea al usuario
 @usersBP.route('/logout')
@@ -39,7 +41,6 @@ def logout():
 def registerUser():
     data = (request.get_json())
     statMessage = createNewUser(data)
-    print(statMessage)
     return statMessage
 
 

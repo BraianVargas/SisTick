@@ -2,15 +2,6 @@ DATABASE_HOST = 'localhost'
 DATABASE_USER = 'root'
 DATABASE_PASSWORD = ''
 FLASK_DEBUG=True
-DATABASE = 'sictick'
+DATABASE = 'sistick'
 SECRET_KEY = "GDtfDCFYjDhhGGHVsDAgSewKisaksd"
 TRACK_MODIFICATIONS = False
-
-
-
-
-
-# set FLASK_DATABASE_HOST = 'localhost'
-# set FLASK_DATABASE_USER = 'root'
-# set FLASK_DATABASE_PASSWORD = ''
-# set FLASK_DEBUG=True

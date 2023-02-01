@@ -28,6 +28,9 @@ def load_user(user_id):
 from app.Users import usersBP
 app.register_blueprint(usersBP, url_prefix = '/users')
 
+from app.Tickets import ticketsBP
+app.register_blueprint(ticketsBP, url_prefix = '/tickets')
+
 
 
 if __name__=="__main__":

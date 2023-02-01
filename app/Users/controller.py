@@ -12,7 +12,10 @@ def createNewUser(userDict):
     values = []
     for key,value in userDict.items():
         keys.append(key)
-        values.append(value)
+        if(key == 'password'):
+            values.append(generate_password_hash(value,"sha256"))
+        else:
+            values.append(value)
     q += "("
     for key in keys:
         if key == keys[-1]:
@@ -55,15 +58,12 @@ def getUserFromLogin(uname, inputPassword):
         userSelected = c.fetchone()
 
         if userSelected != None:
-            print((hashlib.sha512(inputPassword.encode())).hexdigest())
-            print(userSelected['password'])
-
             try:
-                if userSelected['password'] == (hashlib.sha512(inputPassword.encode())).hexdigest():
+                if check_password_hash(userSelected['password'], inputPassword):
                     try:
                         return User(userSelected['id'], userSelected['username'], userSelected['email'], userSelected['password'], userSelected['type'])
                     except Exception as e:
-                        return f"User. {e}"
+                        return f"Fatal User Error. {e}"
                 else:
                     return "Error. Usuario o contraseña incorrecto."    
             except Exception as e:
