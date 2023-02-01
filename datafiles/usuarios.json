@@ -3,27 +3,30 @@
     "email":"jvillavicencio@energiasanjuan.com.ar",
     "password":"170635",
     "type":"admin"
-},{
-    "username":"Paulo",
-    "email":"ppaez@energiasanjuan.com.ar",
-    "password":"558496",
-    "type":"admin"
-},{
+}
+
+{
     "username":"Jorge",
     "email":"jinfante@energiasanjuan.com.ar",
     "password":"841315",
     "type":"admin"
-},{
+}
+
+{
     "username":"Sergio",
     "email":"scastillo@energiasanjuan.com.ar",
     "password":"997826",
     "type":"usuario"
-},{
+}
+
+{
     "username":"Joel",
     "email":"jcosta@energiasanjuan.com.ar",
     "password":"415968",
     "type":"usuario"
-},{
+}
+
+{
     "username":"Facundo",
     "email":"nicfpaez@energiasanjuan.com.ar",
     "password":"886418",

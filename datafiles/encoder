@@ -1,3 +1,0 @@
-import hashlib
-
-print((hashlib.sha512("886418".encode())).hexdigest())

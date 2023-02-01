@@ -38,7 +38,6 @@ def createNewUser(userDict):
         db.commit()
         return "202 - Status Ok - Usuario Creado"
     except Exception as e:
-        print(e)
         return F"FATAL ERROR. {e}"
 
 def verifLogin(user, password):
@@ -56,7 +55,7 @@ def getUserFromLogin(uname, inputPassword):
     try:
         c.execute(f"SELECT * FROM usuarios WHERE username = %s",(uname,))
         userSelected = c.fetchone()
-
+        
         if userSelected != None:
             try:
                 if check_password_hash(userSelected['password'], inputPassword):

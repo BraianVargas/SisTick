@@ -14,7 +14,6 @@ from . import ticketsBP
 @ticketsBP.route('/nuevo', methods=['GET', 'POST'])
 def createTicket():
     data = request.get_json()
-    
     try:
         statMessage = createTicketHandler(data)
         return statMessage

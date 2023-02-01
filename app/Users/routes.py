@@ -19,13 +19,14 @@ def login():
         return f"Is already logged in. {current_user.username}"
     else:
         recivedUserData = request.get_json()
-
         try:
             user = getUserFromLogin(recivedUserData['username'], recivedUserData['password'])
+
             if ((user!=None) and (isinstance(user,User))):
                 login_user(user, remember = recivedUserData['remember'], duration = datetime.timedelta(minutes=15))
                 return f"Se pudo loguear {user.username}"
-
+            else:
+                return "No es de tipo usuario"
         except Exception as e:
             return f"User or password wrong. Error.{e}"
 
@@ -37,7 +38,7 @@ def logout():
     return "Cerro sesion"
 
 
-@usersBP.route('/register')
+@usersBP.route('/register', methods=['GET','POST'])
 def registerUser():
     data = (request.get_json())
     statMessage = createNewUser(data)

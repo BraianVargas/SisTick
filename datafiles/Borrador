@@ -1,0 +1,11 @@
+import hashlib
+
+print((hashlib.sha512("886418".encode())).hexdigest())
+
+{
+     "title":"",
+     "description":"",
+     "creator_id":"", # Configuarar con el usuario Logeado
+     "assigned_to":"", # Seleccionar segun el id de usuario Ingresado
+     "state":""
+}
